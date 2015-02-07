@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <queue>
-#include "../src/Heap.h"
+#include "include/Heap.h"
 using namespace std;
 
 int main(int argc, char * argv[])

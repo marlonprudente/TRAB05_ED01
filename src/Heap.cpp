@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Heap.h"
+#include "../include/Heap.h"
 #include <queue>
 using namespace std;
 

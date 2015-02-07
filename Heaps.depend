@@ -13,9 +13,12 @@
 
 1423323293 c:\users\marlon prudente\documents\netbeansprojects\trab05_ed01\heap.h
 
-1423321886 source:c:\users\marlon prudente\documents\netbeansprojects\trab05_ed01\main.cpp
+1423328856 source:c:\users\marlon prudente\documents\netbeansprojects\trab05_ed01\main.cpp
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<queue>
+	"include/Heap.h"
+
+1423323293 c:\users\marlon prudente\documents\netbeansprojects\trab05_ed01\include\heap.h
 
