@@ -1,11 +1,11 @@
 #ifndef HEAP_H_INCLUDED
 #define HEAP_H_INCLUDED
-#define FILHO_ESQUERDO(i) (2*(i + 1))
-#define FILHO_DIREITO(i) (2*(i + 1))+1
+#define FILHO_ESQUERDO(i) (2*i)+1
+#define FILHO_DIREITO(i) (2*i)+2
 class Heap
 {
 private:
-    int *vetor, *heap, tam = 0, isHeap;
+    int *vetor, *heap, tam = 0, isHeap = 0;
 public:
     Heap()
     {
