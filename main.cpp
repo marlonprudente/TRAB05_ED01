@@ -13,7 +13,7 @@ int main(int argc, char * argv[])
     cout <<"2 - Inserir (Heap)" <<endl;
     cout <<"3 - Buscar (Heap) " <<endl;
     cout <<"4 - Remover (Heap)"<<endl;
-    cout <<"5 - Heapify " <<endl;
+    cout <<"5 - Criar Heap " <<endl;
     cout <<"6 - Imprimir Heap" <<endl;
     cout <<"0 - Sair" << endl;
 	cin >> op;
@@ -25,6 +25,7 @@ int main(int argc, char * argv[])
             heap.criarvetor();
             break;
         case 2:
+            heap.inserirnaheap();
             break;
         case 3:
             break;

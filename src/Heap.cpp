@@ -2,7 +2,12 @@
 #include "../include/Heap.h"
 #include <queue>
 using namespace std;
-
+int Heap::PAI(int i){
+    if(i!=0)
+        return (int)(i-1)/2;
+    else
+        return 0;
+}
 void Heap::criarvetor()
 {
     int valor, i = 0;
@@ -15,8 +20,8 @@ void Heap::criarvetor()
         cin >> valor;
     }
     vetor = new int(lista.size());
-    tam = lista.size();
-    cout << "Tamanho da lista: " << lista.size() << endl;
+    tamv = lista.size();
+    cout << "tamvanho da lista: " << lista.size() << endl;
     while(!lista.empty())
     {
         vetor[i] = lista.front();
@@ -24,18 +29,34 @@ void Heap::criarvetor()
         i++;
     }
 }
+void Heap::inserirnaheap()
+{
+    if(heap[tamr]!=-1)
+    {
+    int valor;
+	cout<<"Digite o valor: " << endl;
+	cin>>valor;
+	heap[tamr] = valor;
+	subir(tamr);
+	cout << "Valor inserido com sucesso!"<<endl;
+    }
+    else
+    {
+        cout << "Heap Cheia!" << endl;
+    }
 
+}
 void Heap::criarheap()
 {
     int i;
-    heap = new int(2*tam+1);
-    for(i=0; i<(2*tam+1); i++)
+    heap = new int(tamr);
+    for(i=0; i<tamr; i++)
     {
         heap[i] = -1;
     }
-    if(tam>0)
+    if(tamv>0)
     {
-        for(i= tam/2; i>=0; i--)
+        for(i= tamv/2; i>=0; i--)
         {
             heapify(i);
         }
@@ -45,13 +66,24 @@ void Heap::criarheap()
     {
         cout << "Vetor vazio!"  << endl;
     }
-    for(i=0; i<tam; i++)
+    for(i=0; i<tamv; i++)
     {
         heap[i] = vetor[i];
     }
 
 
 
+}
+void Heap::subir(int index)
+{
+    	if((index>0) && (heap[PAI(index)] < heap[index]))
+	{
+		int aux = heap[PAI(index)];
+		heap[PAI(index)] = heap[index];
+		heap[index] = aux;
+		subir(PAI(index));
+
+	}
 }
 void Heap::descer(int i, int n)
 {
@@ -72,11 +104,11 @@ void Heap::descer(int i, int n)
 }
 void Heap::heapify(int index){
     int maior;
-    if(FILHO_ESQUERDO(index)<tam && vetor[FILHO_ESQUERDO(index)]>vetor[index])
+    if(FILHO_ESQUERDO(index)<tamv && vetor[FILHO_ESQUERDO(index)]>vetor[index])
         maior=FILHO_ESQUERDO(index);
     else
         maior=index;
-    if(FILHO_DIREITO(index)<tam && vetor[FILHO_DIREITO(index)]>vetor[maior])
+    if(FILHO_DIREITO(index)<tamv && vetor[FILHO_DIREITO(index)]>vetor[maior])
         maior=FILHO_DIREITO(index);
     if(maior!=index)
     {
@@ -89,7 +121,7 @@ void Heap::heapify(int index){
 
 void Heap::imprimirheap()
 {
-    if(isHeap==1 && tam!=0)
+    if(isHeap==1 && tamv!=0)
     {
         int i = 0;
 
@@ -100,7 +132,7 @@ void Heap::imprimirheap()
             cout<< "FD: " << heap[2] << endl;
         i++;
 
-        while(i < tam)
+        while(i < tamv)
         {
             cout<< "No: " << heap[i]<<" ";
             if(heap[FILHO_ESQUERDO(i)] != 0)

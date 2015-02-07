@@ -5,7 +5,7 @@
 class Heap
 {
 private:
-    int *vetor, *heap, tam = 0, isHeap = 0;
+    int *vetor, *heap, tamv = 0, tamr = 30, isHeap = 0;
 public:
     Heap()
     {
@@ -18,8 +18,9 @@ public:
     void criarheap();
     void imprimirheap();
     void heapify(int i);
-    void subir(int i, int n);
+    void subir(int i);
     void descer(int i, int n);
+    int PAI(int i);
 };
 
 #endif // HEAP_H_INCLUDED
