@@ -35,14 +35,14 @@ void Heap::inserirnaheap()
 {
     if(nro_elem!=tamr)
     {
-    int valor;
-	cout<<"Digite o valor: " << endl;
-	cin>>valor;
-	nro_elem++;
-	heap[nro_elem] = valor;
-	subir(nro_elem);
+        int valor;
+        cout<<"Digite o valor: " << endl;
+        cin>>valor;
+        nro_elem++;
+        heap[nro_elem] = valor;
+        subir(nro_elem);
 
-	cout << "Valor inserido com sucesso!"<<endl;
+        cout << "Valor inserido com sucesso!"<<endl;
     }
     else
     {
@@ -55,7 +55,7 @@ void Heap::buscarnaheap()
     int valor, i;
     cout << "Digite o valor a ser procurado: ";
     cin >> valor;
-    for(i=0;i<nro_elem;i++)
+    for(i=0; i<nro_elem; i++)
     {
         if(heap[i]==valor)
         {
@@ -68,13 +68,13 @@ void Heap::buscarnaheap()
 }
 void Heap::removerdaheap()
 {
-	if(nro_elem <= 0)
-	{
-		std::cout<<"A Heap já está vazia!"<<std::endl;
-		return;
-	}
+    if(nro_elem <= 0)
+    {
+        std::cout<<"A Heap já está vazia!"<<std::endl;
+        return;
+    }
 
-	int aux = 0;
+    int aux = 0;
 
     if(nro_elem>1)
     {
@@ -123,34 +123,35 @@ void Heap::criarheap()
 
 void Heap::subir(int index)
 {
-    	if((index>1) && (heap[PAI(index)] < heap[index]))
-	{
-		int aux = heap[PAI(index)];
-		heap[PAI(index)] = heap[index];
-		heap[index] = aux;
-		subir(PAI(index));
+    if((index>1) && (heap[PAI(index)] < heap[index]))
+    {
+        int aux = heap[PAI(index)];
+        heap[PAI(index)] = heap[index];
+        heap[index] = aux;
+        subir(PAI(index));
 
-	}
+    }
 }
 
 void Heap::descer(int i, int n)
 {
-	int filho;
-	if((FILHO_DIREITO(i) < n) && (heap[FILHO_DIREITO(i)] > heap[FILHO_ESQUERDO(i)]))
-		filho = FILHO_DIREITO(i);
-	else
-		filho = FILHO_ESQUERDO(i);
-	if((filho<n) && (heap[filho] > heap[i]))
-	{
-		int aux;
-		aux = heap[i];
-		heap[i] = heap[filho];
-		heap[filho] = aux;
-		descer(filho, n);
-	}
+    int filho;
+    if((FILHO_DIREITO(i) < n) && (heap[FILHO_DIREITO(i)] > heap[FILHO_ESQUERDO(i)]))
+        filho = FILHO_DIREITO(i);
+    else
+        filho = FILHO_ESQUERDO(i);
+    if((filho<n) && (heap[filho] > heap[i]))
+    {
+        int aux;
+        aux = heap[i];
+        heap[i] = heap[filho];
+        heap[filho] = aux;
+        descer(filho, n);
+    }
 }
 
-void Heap::heapify(int index){
+void Heap::heapify(int index)
+{
     int maior;
     if(FILHO_ESQUERDO(index)<tamv && vetor[FILHO_ESQUERDO(index)]>vetor[index])
         maior=FILHO_ESQUERDO(index);
@@ -169,7 +170,7 @@ void Heap::heapify(int index){
 
 void Heap::imprimirheap()
 {
-    if(isHeap==1 && tamv!=0)
+    if(isHeap==1 && nro_elem!=0)
     {
         int i = 0;
 
@@ -184,13 +185,20 @@ void Heap::imprimirheap()
         {
             if(heap[i]!=-1)
             {
-            cout<< "No: " << heap[i]<<" ";
-            if(heap[FILHO_ESQUERDO(i)] != 0)
-            cout<< "FE: " <<  heap[FILHO_ESQUERDO(i)]<< " ";
-            if(heap[FILHO_DIREITO(i)] != 0)
-            cout<< "FD: " << heap[FILHO_DIREITO(i)]<< endl;
+                if(heap[FILHO_ESQUERDO(i)] == -1 && heap[FILHO_DIREITO(i)] == -1)
+                {
+
+                }
+                else
+                {
+                        cout<< "No: " << heap[i]<<" ";
+                    if(heap[FILHO_ESQUERDO(i)] != 0)
+                        cout<< "FE: " <<  heap[FILHO_ESQUERDO(i)]<< " ";
+                    if(heap[FILHO_DIREITO(i)] != 0)
+                        cout<< "FD: " << heap[FILHO_DIREITO(i)]<< endl;
+                }
             }
-        i++;
+            i++;
         }
     }
     else

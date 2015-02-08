@@ -40,6 +40,7 @@ int main(int argc, char * argv[])
             heap.imprimirheap();
             break;
         default:
+            cout << "Opção Inválida." << endl;
             break;
 
         }
