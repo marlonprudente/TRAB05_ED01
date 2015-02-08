@@ -2,7 +2,8 @@
 #include "../include/Heap.h"
 #include <queue>
 using namespace std;
-int Heap::PAI(int i){
+int Heap::PAI(int i)
+{
     if(i!=0)
         return (int)(i-1)/2;
     else
@@ -21,7 +22,7 @@ void Heap::criarvetor()
     }
     vetor = new int(lista.size());
     tamv = lista.size();
-    cout << "tamvanho da lista: " << lista.size() << endl;
+    cout << "Vetor criado, com tamanho: " << lista.size() << endl;
     while(!lista.empty())
     {
         vetor[i] = lista.front();
@@ -29,15 +30,18 @@ void Heap::criarvetor()
         i++;
     }
 }
+
 void Heap::inserirnaheap()
 {
-    if(heap[tamr]!=-1)
+    if(nro_elem!=tamr)
     {
     int valor;
 	cout<<"Digite o valor: " << endl;
 	cin>>valor;
-	heap[tamr] = valor;
-	subir(tamr);
+	nro_elem++;
+	heap[nro_elem] = valor;
+	subir(nro_elem);
+
 	cout << "Valor inserido com sucesso!"<<endl;
     }
     else
@@ -46,6 +50,49 @@ void Heap::inserirnaheap()
     }
 
 }
+void Heap::buscarnaheap()
+{
+    int valor, i;
+    cout << "Digite o valor a ser procurado: ";
+    cin >> valor;
+    for(i=0;i<nro_elem;i++)
+    {
+        if(heap[i]==valor)
+        {
+            cout << "Encontrado o valor "<<valor<<" no Heap! Estava no indice "<<i<<endl;
+            break;
+        }
+    }
+    if(i==nro_elem)
+        cout << "Valor não encontrado na Heap!"<<endl;
+}
+void Heap::removerdaheap()
+{
+	if(nro_elem <= 0)
+	{
+		std::cout<<"A Heap já está vazia!"<<std::endl;
+		return;
+	}
+
+	int aux = 0;
+
+    if(nro_elem>1)
+    {
+        aux = heap[0];
+        heap[0] = heap[nro_elem-1];
+        heap[nro_elem-1]=-1;
+        nro_elem--;
+        descer(0,nro_elem);   //TÁ BUGADO!
+        std::cout << "Valor removido com sucesso!"<<std::endl;
+    }
+    else
+    {
+        heap[0]=-1;
+        nro_elem--;
+        std::cout << "Heap esvaziada!"<<std::endl;
+    }
+}
+
 void Heap::criarheap()
 {
     int i;
@@ -61,6 +108,7 @@ void Heap::criarheap()
             heapify(i);
         }
         isHeap = 1;
+        cout << "Heap Criada!" << endl;
     }
     else
     {
@@ -69,14 +117,13 @@ void Heap::criarheap()
     for(i=0; i<tamv; i++)
     {
         heap[i] = vetor[i];
+        nro_elem++;
     }
-
-
-
 }
+
 void Heap::subir(int index)
 {
-    	if((index>0) && (heap[PAI(index)] < heap[index]))
+    	if((index>1) && (heap[PAI(index)] < heap[index]))
 	{
 		int aux = heap[PAI(index)];
 		heap[PAI(index)] = heap[index];
@@ -85,23 +132,24 @@ void Heap::subir(int index)
 
 	}
 }
+
 void Heap::descer(int i, int n)
 {
-    int aux;
-    if(vetor[i]<vetor[FILHO_ESQUERDO(i)])
-    {
-        aux = vetor[i];
-        vetor[i] = vetor[FILHO_ESQUERDO(i)];
-        vetor[FILHO_ESQUERDO(i)] = aux;
-    }
-    if(vetor[i]<vetor[FILHO_DIREITO(i)])
-    {
-        aux = vetor[i];
-        vetor[i] = vetor[FILHO_DIREITO(i)];
-        vetor[FILHO_DIREITO(i)] = aux;
-    }
-
+	int filho;
+	if((FILHO_DIREITO(i) < n) && (heap[FILHO_DIREITO(i)] > heap[FILHO_ESQUERDO(i)]))
+		filho = FILHO_DIREITO(i);
+	else
+		filho = FILHO_ESQUERDO(i);
+	if((filho<n) && (heap[filho] > heap[i]))
+	{
+		int aux;
+		aux = heap[i];
+		heap[i] = heap[filho];
+		heap[filho] = aux;
+		descer(filho, n);
+	}
 }
+
 void Heap::heapify(int index){
     int maior;
     if(FILHO_ESQUERDO(index)<tamv && vetor[FILHO_ESQUERDO(index)]>vetor[index])
@@ -132,14 +180,17 @@ void Heap::imprimirheap()
             cout<< "FD: " << heap[2] << endl;
         i++;
 
-        while(i < tamv)
+        while(i < nro_elem)
         {
+            if(heap[i]!=-1)
+            {
             cout<< "No: " << heap[i]<<" ";
             if(heap[FILHO_ESQUERDO(i)] != 0)
             cout<< "FE: " <<  heap[FILHO_ESQUERDO(i)]<< " ";
             if(heap[FILHO_DIREITO(i)] != 0)
             cout<< "FD: " << heap[FILHO_DIREITO(i)]<< endl;
-            i++;
+            }
+        i++;
         }
     }
     else

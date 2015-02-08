@@ -28,8 +28,10 @@ int main(int argc, char * argv[])
             heap.inserirnaheap();
             break;
         case 3:
+            heap.buscarnaheap();
             break;
         case 4:
+            heap.removerdaheap();
             break;
         case 5:
             heap.criarheap();
@@ -42,10 +44,10 @@ int main(int argc, char * argv[])
 
         }
     cout <<"1 - Inserir (Matriz Unidimensional)" << endl;
-    cout <<"2 - Inserir (Heap)" <<endl;
-    cout <<"3 - Buscar (Heap) " <<endl;
-    cout <<"4 - Remover (Heap)"<<endl;
-    cout <<"5 - Heapify " <<endl;
+    cout <<"2 - Inserir na Heap" <<endl;
+    cout <<"3 - Buscar na Heap" <<endl;
+    cout <<"4 - Remover da Heap"<<endl;
+    cout <<"5 - Criar Heap" <<endl;
     cout <<"6 - Imprimir Heap" <<endl;
     cout <<"0 - Sair" << endl;
 	cin >> op;

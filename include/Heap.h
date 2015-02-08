@@ -5,7 +5,7 @@
 class Heap
 {
 private:
-    int *vetor, *heap, tamv = 0, tamr = 30, isHeap = 0;
+    int *vetor, *heap, tamv = 0, tamr = 30, isHeap = 0, nro_elem = 0;
 public:
     Heap()
     {
