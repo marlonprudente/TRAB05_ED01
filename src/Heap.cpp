@@ -74,11 +74,11 @@ void Heap::removerdaheap()
         return;
     }
 
-    int aux = 0;
+   // int aux;
 
     if(nro_elem>1)
     {
-        aux = heap[0];
+        //int aux = heap[0];
         heap[0] = heap[nro_elem-1];
         heap[nro_elem-1]=-1;
         nro_elem--;
@@ -121,7 +121,7 @@ void Heap::criarheap()
     }
 }
 
-void Heap::subir(int index)
+void Heap::subir(int index) //Bug detectado.
 {
     if((index>1) && (heap[PAI(index)] < heap[index]))
     {
@@ -170,7 +170,7 @@ void Heap::heapify(int index)
 
 void Heap::imprimirheap()
 {
-    if(isHeap==1 && nro_elem!=0)
+    if(isHeap==1 && nro_elem!=0 /*&& heap[0]!=-1*/)
     {
         int i = 0;
 

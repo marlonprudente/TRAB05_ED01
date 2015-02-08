@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char * argv[])
 {
     Heap heap;
-    int op, i, *vetor;
+    int op;
     cout <<"1 - Inserir (Matriz Unidimensional)" << endl;
     cout <<"2 - Inserir (Heap)" <<endl;
     cout <<"3 - Buscar (Heap) " <<endl;
