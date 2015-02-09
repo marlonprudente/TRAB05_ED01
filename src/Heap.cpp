@@ -33,7 +33,9 @@ void Heap::criarvetor()
 
 void Heap::inserirnaheap()
 {
-    if(nro_elem!=tamr)
+    if(isHeap==1)
+    {
+        if(nro_elem!=tamr)
     {
         int valor;
         cout<<"Digite o valor: " << endl;
@@ -48,11 +50,19 @@ void Heap::inserirnaheap()
     {
         cout << "Heap Cheia!" << endl;
     }
+    }
+    else
+    {
+        cout << "Heap não criada!" << endl;
+    }
+
 
 }
 void Heap::buscarnaheap()
 {
-    int valor, i;
+    if(isHeap==1)
+    {
+        int valor, i;
     cout << "Digite o valor a ser procurado: ";
     cin >> valor;
     for(i=0; i<nro_elem; i++)
@@ -65,10 +75,18 @@ void Heap::buscarnaheap()
     }
     if(i==nro_elem)
         cout << "Valor não encontrado na Heap!"<<endl;
+    }
+    else
+    {
+        cout << "Heap não criada!" << endl;
+    }
+
 }
 void Heap::removerdaheap()
 {
-    if(nro_elem <= 0)
+    if(isHeap==1)
+    {
+         if(nro_elem <= 0)
     {
         std::cout<<"A Heap já está vazia!"<<std::endl;
         return;
@@ -91,6 +109,12 @@ void Heap::removerdaheap()
         nro_elem--;
         std::cout << "Heap esvaziada!"<<std::endl;
     }
+    }
+    else
+    {
+        cout << "Heap não criada!" << endl;
+    }
+
 }
 
 void Heap::criarheap()
