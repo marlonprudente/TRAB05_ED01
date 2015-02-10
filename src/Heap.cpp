@@ -18,6 +18,8 @@ void Heap::criarvetor()
     while(valor>=0)
     {
         lista.push(valor);
+        //vetor[i] = valor;
+        //i++;
         cin >> valor;
     }
     vetor = new int(lista.size());
@@ -29,13 +31,18 @@ void Heap::criarvetor()
         lista.pop();
         i++;
     }
+    tamh = 3*tamv;
+    for(i=0;i<tamv;i++)
+    {
+        cout << "Vetor " << i << " <=" << vetor[i] << endl;
+    }
 }
 
 void Heap::inserirnaheap()
 {
     if(isHeap==1)
     {
-        if(nro_elem!=tamr)
+        if(nro_elem!=tamh)
     {
         int valor;
         cout<<"Digite o valor: " << endl;
@@ -65,7 +72,7 @@ void Heap::buscarnaheap()
         int valor, i;
     cout << "Digite o valor a ser procurado: ";
     cin >> valor;
-    for(i=0; i<tamr; i++)
+    for(i=0; i<tamh; i++)
     {
         if(heap[i]==valor)
         {
@@ -73,7 +80,7 @@ void Heap::buscarnaheap()
             break;
         }
     }
-    if(i==tamr)
+    if(i==tamh)
         cout << "Valor não encontrado na Heap!"<<endl;
     }
     else
@@ -120,8 +127,8 @@ void Heap::removerdaheap()
 void Heap::criarheap()
 {
     int i;
-    heap = new int(tamr);
-    for(i=0; i<tamr; i++)
+    heap = new int(tamh);
+    for(i=0; i<tamh; i++)
     {
         heap[i] = -1;
     }
@@ -142,6 +149,12 @@ void Heap::criarheap()
     {
         heap[i] = vetor[i];
         nro_elem++;
+    }
+    for(i=0;i<tamh;i++)
+    {
+
+        cout << "Heap " << i << " <=" << heap[i] << endl;
+
     }
 }
 
