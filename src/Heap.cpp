@@ -65,7 +65,7 @@ void Heap::buscarnaheap()
         int valor, i;
     cout << "Digite o valor a ser procurado: ";
     cin >> valor;
-    for(i=0; i<nro_elem; i++)
+    for(i=0; i<tamr; i++)
     {
         if(heap[i]==valor)
         {
@@ -73,7 +73,7 @@ void Heap::buscarnaheap()
             break;
         }
     }
-    if(i==nro_elem)
+    if(i==tamr)
         cout << "Valor não encontrado na Heap!"<<endl;
     }
     else
