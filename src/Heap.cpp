@@ -47,6 +47,14 @@ void Heap::inserirnaheap()
         int valor;
         cout<<"Digite o valor: " << endl;
         cin>>valor;
+            for(i=0;i<tamh;i++)
+            {
+                if(valor==heap[i])
+                {
+                cout << "Ja existe esse valor!";
+                break;
+                }
+            }
         nro_elem++;
         heap[nro_elem] = valor;
         subir(nro_elem);
@@ -60,7 +68,7 @@ void Heap::inserirnaheap()
     }
     else
     {
-        cout << "Heap não criada!" << endl;
+        cout << "Heap nÃ£o criada!" << endl;
     }
 
 
@@ -81,11 +89,11 @@ void Heap::buscarnaheap()
         }
     }
     if(i==tamh)
-        cout << "Valor não encontrado na Heap!"<<endl;
+        cout << "Valor nÃ£o encontrado na Heap!"<<endl;
     }
     else
     {
-        cout << "Heap não criada!" << endl;
+        cout << "Heap nÃ£o criada!" << endl;
     }
 
 }
@@ -95,7 +103,7 @@ void Heap::removerdaheap()
     {
          if(nro_elem <= 0)
     {
-        std::cout<<"A Heap já está vazia!"<<std::endl;
+        std::cout<<"A Heap jÃ¡ estÃ¡ vazia!"<<std::endl;
         return;
     }
 
@@ -107,7 +115,7 @@ void Heap::removerdaheap()
         heap[0] = heap[nro_elem-1];
         heap[nro_elem-1]=-1;
         nro_elem--;
-        descer(0,nro_elem);   //TÁ BUGADO!
+        descer(0,nro_elem);   //TÃ BUGADO!
         std::cout << "Valor removido com sucesso!"<<std::endl;
     }
     else
@@ -119,7 +127,7 @@ void Heap::removerdaheap()
     }
     else
     {
-        cout << "Heap não criada!" << endl;
+        cout << "Heap nÃ£o criada!" << endl;
     }
 
 }
@@ -240,7 +248,7 @@ void Heap::imprimirheap()
     }
     else
     {
-        cout<<"Não Existe Heap para ser Impressa!"<<endl;
+        cout<<"NÃ£o Existe Heap para ser Impressa!"<<endl;
     }
 
 }
