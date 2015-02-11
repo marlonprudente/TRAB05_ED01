@@ -115,7 +115,7 @@ void Heap::removerdaheap()
         heap[0] = heap[nro_elem-1];
         heap[nro_elem-1]=-1;
         nro_elem--;
-        descer(0,nro_elem);   //TÁ BUGADO!
+        descer(0,nro_elem - 1);   //TÁ BUGADO!
         std::cout << "Valor removido com sucesso!"<<std::endl;
     }
     else
@@ -168,7 +168,7 @@ void Heap::criarheap()
 
 void Heap::subir(int index) //Bug detectado.
 {
-    if((index>1) && (heap[PAI(index)] < heap[index]))
+    if((index>0) && (heap[PAI(index)] < heap[index]))
     {
         int aux = heap[PAI(index)];
         heap[PAI(index)] = heap[index];
